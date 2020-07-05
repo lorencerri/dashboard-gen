@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "strict": true,
+        "baseUrl": "./",
+        "outDir": "build",
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "target": "es6",
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "types": ["node"],
+        "typeRoots": ["node_modules/@types"]
+    },
+    "typedocOptions": {
+        "mode": "modules",
+        "out": "docs"
+    },
+    "include": ["./src/**/*.ts"]
+}

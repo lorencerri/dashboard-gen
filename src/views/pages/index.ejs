@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head') %>
+    </head>
+    <body class="container">
+        <main>
+            <h1><%- title %></h1>
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <% for(var i = 0; i < categories.length; i++) { %>
+                            <a
+                                class="list-group-item list-group-item-action <%- i === 0 ? 'active' : '' %>"
+                                id="list-<%= categories[i] %>-list"
+                                data-toggle="list"
+                                href="#list-<%= categories[i] %>"
+                                role="tab"
+                                aria-controls="list-<%= categories[i] %>"
+                            >
+                                <%= categories[i] %>
+                            </a>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="tab-content" id="nav-tabContent">
+                            <% for(var i = 0; i < categories.length; i++) { %>
+                                <div class="tab-pane fade show <%- i === 0 ? 'active' : '' %>" id="list-<%= categories[i] %>" role="tabpanel" aria-labelledby="list-<%= categories[i] %>-list">
+                                    <form>
+                                        <% var filtered = components.filter(c => c.options.category === categories[i]); %>
+                                        <% for(var x = 0; x < filtered.length; x++) { %>
+                                            <div class="form-group">
+                                                <label for="<%= filtered[x].name %>"><%= filtered[x].name %></label>
+                                                <input type="text" class="form-control" id="<%= filtered[x].name %>" aria-describedby="<%= filtered[x].name %>">
+                                            </div>
+                                        <% } %>
+                                    </form>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <%- include('../partials/footer') %>
+        </footer>
+    </body>
+</html>
